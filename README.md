@@ -1,6 +1,23 @@
-# SmartHouseASA
+# Assignment 2
 
-**Assignment 1**
+Added `Microwave` as device, that automatically starts at a certain hour.
+
+Implemented `PersonSensor` to follow one of the two required `Person` (where I added the `prev_room` attribute), switching on and off the light based on their movement. This is performed using an `Intention` and `Goal` with the `HouseAgent`.
+
+The main file is `my_scenario` that, as required from the **Assignment 2**, implements a sub-part of the entire scenario with:
+
+- at least two rooms: _kitchen_, _living room_ and _bedroom_
+- at least two devices: _Microwave_ and _Light_ (and also _Alarm_ from the starting code)
+- at least one agent: _HouseAgent_
+
+Log file: to save the output in the `project.log` file, I temporary commented the Clock.js code:
+
+```javascript
+// process.stdout.clearLine(0);
+// process.stdout.cursorTo(0);
+```
+
+# Assignment 1
 
 **Autonomous Software Agents - UniTn 2021/2022**
 
@@ -84,23 +101,4 @@ The camera can recognize people and act dependently on their preference (eg. my 
 #### House agent
 
 Turn on lights when someone enters a room and it switch them off when they exit. When everybody is out of house, every day starts the Robot Vacuum and if the washing machine is charged and no one it is at home, it starts (due to the noise produced). Everything trying to minimize consumption.
-
-# Assignment 2
-
-Added `Microwave` as device, that automatically starts at a certain hour.
-
-Implemented `PersonSensor` to follow one of the two required `Person` (where I added the `prev_room` attribute), switching on and off the light based on their movement. This is performed using an `Intention` and `Goal` with the `HouseAgent`.
-
-The main file is `my_scenario` that, as required from the **Assignment 2**, implements a sub-part of the entire scenario with:
-
-- at least two rooms: _kitchen_, _living room_ and _bedroom_
-- at least two devices: _Microwave_ and _Light_ (and also _Alarm _from the starting code)
-- at least one agent: _HouseAgent_
-
-Log file: to save the output in the `project.log` file, I temporary commented the Clock.js code:
-
-```javascript
-// process.stdout.clearLine(0);
-// process.stdout.cursorTo(0);
-```
 
