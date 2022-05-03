@@ -6,6 +6,7 @@ class Person extends Observable {
     this.house = house // reference to the house
     this.name = name // non-observable
     this.set("in_room", "bedroom") // observable
+    this.set("prev_room", "bedroom") // observable
     // this.observe( 'in_room', v => console.log(this.name, 'moved to', v) )    // observe
   }
   moveTo(to_room) {
@@ -15,6 +16,7 @@ class Person extends Observable {
     }
     if (this.house.rooms[this.in_room].doors_to.includes(to_room)) {
       // for object: to in this.house.rooms[this.in_room].doors_to
+      this.prev_room = this.in_room
       console.log(this.name, "\tmoved from", this.in_room, "to", to_room);
       this.in_room = to_room
       return true

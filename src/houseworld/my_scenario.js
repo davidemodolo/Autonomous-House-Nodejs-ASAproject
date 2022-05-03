@@ -14,7 +14,7 @@ const {
   SenseOneLightGoal,
   SenseOneLightIntention,
 } = require("./LightSensor");
-
+const {SensePersonGoal, SensePersonsIntention} = require("./PersonSensor");
 class House {
   constructor() {
     this.people = {
@@ -41,10 +41,13 @@ class House {
 // House, which includes rooms and devices
 
 var myHouse = new House();
+
 // Agents
 var myAgent = new Agent("HouseAgent");
 myAgent.intentions.push(AlarmIntention);
+myAgent.intentions.push(SensePersonsIntention)
 myAgent.postSubGoal(new AlarmGoal());
+myAgent.postSubGoal(new SensePersonGoal([myHouse.people.davide, myHouse.people.maura]));
 
 myAgent.intentions.push(SenseLightsIntention);
 // myAgent.intentions.push(SenseOneLightIntention)
@@ -62,20 +65,15 @@ Clock.global.observe("mm", (mm) => {
     myHouse.devices.kitchen_microwave.switchOnMW();
   }
   if (time.hh == 6 && time.mm == 0) {
-    myHouse.devices.bedroom_light.switchOnLight();
-    myHouse.devices.kitchen_light.switchOnLight();
     myHouse.devices.kitchen_microwave.switchOffMW();
 
     myHouse.people.davide.moveTo("living_room");
     myHouse.people.davide.moveTo("kitchen");
 
-    myHouse.devices.bedroom_light.switchOffLight();
-
     myHouse.devices.kitchen_microwave.removeCroissant();
   }
   if (time.hh == 7 && time.mm == 30) {
     myHouse.people.davide.moveTo("living_room");
-    myHouse.devices.kitchen_light.switchOffLight();
     myHouse.devices.living_room_light.switchOnLight();
   }
 

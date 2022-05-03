@@ -4,7 +4,6 @@ class Light extends Observable {
     constructor (house, name) {
         super()
         this.house = house       // reference to the house
-        console.log(this.house.rooms)
         this.name = name           // non-observable
         this.set('status', 'off')   // observable
     }
